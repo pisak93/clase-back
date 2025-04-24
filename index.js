@@ -12,7 +12,7 @@ app.listen(5000, function(){
 });
 
 
-const bbdd="back-app";
+const bbdd="menu";
 const url= "mongodb+srv://pisak93:pisak93@cluster0.vsffz.mongodb.net/"+bbdd+"?retryWrites=true&w=majority&appName=Cluster0";
 
 const connection=mongoose.connect(url);
@@ -64,3 +64,7 @@ try {
 
 
 });
+
+const rutas=require("./assets/rutas.js");
+
+app.use("/assets", rutas);
