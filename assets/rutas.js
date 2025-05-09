@@ -99,7 +99,7 @@ router.get("/pedidos/solo-platos", async function (req, res) {
 
 
     try{
-
+console.log("Fecha recibida:", req.query.fecha);
         const fechaMax = req.query.fecha;
          if (!fechaMax) {
          return res.send({
@@ -108,8 +108,8 @@ router.get("/pedidos/solo-platos", async function (req, res) {
         });
     }
 
-        const pedidos = await Pedido.find({fecha:{$lte:fechaMax}},"fecha platos").populate("platos","nombre");
-        console.log("Pedidos encontrados:", pedidos); 
+        const pedidos = await Pedido.find({fecha:{$lte:fechaMax}},"fecha platos total").populate("platos","nombre precio");
+       // console.log("Pedidos encontrados:", pedidos); 
         res.send({
             status: true,
             message: "Lista de pedidos",
